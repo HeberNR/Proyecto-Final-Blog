@@ -1,5 +1,5 @@
 # Proyecto-Final-Blog
-### aplicación web desarrollada con tecnología DJANGO
+### Aplicación web desarrollada con tecnología DJANGO
 
 
 ## Integrantes
