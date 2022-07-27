@@ -1,4 +1,4 @@
-# Proyecto-Final-Blog
+# Proyecto Final INFORMATORIO CHACO
 ### Aplicación web desarrollada con tecnología DJANGO
 
 
