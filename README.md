@@ -3,7 +3,6 @@ a aplicación web desarrollada con tecnología DJANGO
 
 
 ## Integrantes
-## Features
 
 - Di Blasio Sergio
 - Silva Alan Federico
