@@ -3,7 +3,7 @@
 ### Aplicación web desarrollada con tecnología DJANGO
 
 
-## Integrantes Grupo 6 #
+## Integrantes Grupo 6 #-.-.-.
 
 - Di Blasio Sergio
 - Silva Alan Federico
