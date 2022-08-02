@@ -1,26 +1,55 @@
-{% extends 'inicio.html' %}
+{% extends 'base/base.html' %}
 
 
 
 {% block contenido %}
-    <br><br><br><br><br>
-    <h1>Registro de usuarios</h1>
+<br><br>
 
-    <form method="POST">{% csrf_token %}
-        
-
-        {% for field in form %}
-    <div class="form-group">
-        <label for="">{{field.label}}</label>
-        {{field}}
-    </div>
-        {% endfor %}
-        
-            
-
-        <button type="submit" class="btn btn-success">Crear</button>
+<div class="container">    
+    <form class="form-control-sm" method="post">
+        {% csrf_token %}
+        {% include 'includes/errorforms.html' %}
+        <div class="row mx-auto">
+            <div class="col-6">
+                <label for="">Nombre</label>
+                <input type="text" class="form-control shadow" name="first_name">
+            </div>
+            <div class="col-6">
+                <label for="">Apellido</label>
+                <input type="text" class="form-control shadow" name="last_name">
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-6 pt-3">
+                <label for="">Nombre de usuario</label>
+                <input type="user" name="username" class="form-control shadow" name="username">
+            </div>
+            <div class="col-6 pt-3">
+                <label for="">Correo electrónico</label>
+                <input type="email" name="email" class="form-control shadow" name="email">
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col-6 pt-3">
+                <label for="">Contraseña</label>
+                <input type="password" class="form-control shadow" name="password1">
+            </div>
+            <div class="col-6 pt-3">
+                <label for="">Confirma contraseña</label>
+                <input type="password" name="password2" class="form-control shadow" name="password2">
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end pt-3">
+            <button type="submit" class="btn btn-outline-success me-md-2">Registrar</button>
+            <button type="submit" class="btn btn-outline-success me-md-2">Cancelar</button>
+         </div>
 
     </form>
+</div>        
+
+
+        
+
 {% endblock contenido %}
 
 

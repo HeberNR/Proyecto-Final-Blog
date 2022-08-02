@@ -1,5 +1,5 @@
 from .base import *
-
+import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -11,3 +11,8 @@ DATABASES = {
         
     }
 }
+
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(BASE_DIR), "static"),
+
+)
