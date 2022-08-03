@@ -3,7 +3,7 @@ import os
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blogbd',
+        'NAME': 'blogdbprueba',
         'USER': 'root',
         'PASSWORD': 'Macfdlr4',
         'HOST': 'localhost',
