@@ -11,21 +11,24 @@ from usuario.models import Usuario
 #     def __str__(self):
 #         return f"{self.name}"
 
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    timestamp = models.DateTimeField(default = timezone.now)
+    content = models.TextField()
+    # images = models.ManyToManyField('Images',upload_to = 'media', blank = True)
+    # state = models.BooleanField(default = False)
+    #category = models.ManyToManyField(Category, null=True, blank= True)
+    description = models.CharField(max_length=200)
+    author = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'post')
 
-
-# class Post(models.Model):
-#     title = models.CharField(max_length=200)
-#     timestamp = models.DateTimeField(default = timezone.now)
-#     # images = models.ImageField(upload_to = 'media')
-#     # state = models.BooleanField(default = False)
-#     content = models.TextField()
-#     # category = models.ManyToManyField(Category, null=True, blank= True)
-#     description = models.CharField(max_length=200)
-#     # author = models.ForeignKey(Usuario, )
-
-#     def __str__(self):
-#         return f"{self.title}"  
+    def __str__(self):
+        return f"{self.title}"  
     
 
-#     class Meta:
-#         ordering = ['-timestamp']  #Ordena las publicaciones de la mas nueva a la mas antigua
+    class Meta:
+        ordering = ['-timestamp']  #Ordena las publicaciones de la mas nueva a la mas antigua
+
+
+# class Images(models.Models):
+
+#     image = models.ImageField(upload_to= 'media', null = True, blank = True)
