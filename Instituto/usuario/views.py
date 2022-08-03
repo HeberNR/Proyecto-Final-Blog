@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView
 from .forms import CreateUser
 from .models import Usuario
 from django.urls import reverse
+
 # Create your views here.
 
 
@@ -14,3 +15,5 @@ class Registro(CreateView):
 
     def get_success_url(self, **kwargs):
         return reverse('inicio')
+
+

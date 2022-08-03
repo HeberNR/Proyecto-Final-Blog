@@ -1,0 +1,36 @@
+{% extends 'base/base.html' %}
+
+
+
+{% block contenido %}
+
+<div class="container d-flex justify-content-center align-items-center pt-5">    
+  <form class="form-control-lg" method="post">
+      {% csrf_token %}
+      {% include 'includes/errorforms.html' %}
+          <div class="pt-3">
+              <label for="">Nombre de usuario</label>
+              <input type="user" name="username" class="form-control shadow" name="username">          
+           </div>
+      
+          <div class="pt-3">
+              <label for="">Contraseña</label>
+              <input type="password" class="form-control shadow" name="password">
+          </div>
+          
+      <div class="pt-3 d-flex justify-content-center pb-3">
+          <button type="submit" class="btn btn-outline-success">Iniciar</button>          
+       </div>
+
+       <input class="form-check-input" type="checkbox" value="">
+       <label class="form-check-label" for="flexCheckDefault">
+          Recordar
+       </label>
+      
+  </form>
+
+ 
+
+</div>    
+
+{% endblock %}
