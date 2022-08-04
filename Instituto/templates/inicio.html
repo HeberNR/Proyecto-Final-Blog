@@ -5,6 +5,30 @@
 
 BIENVENIDO {{user.first_name}}
 
+<form action="" method="post"> {% csrf_token %}
+ 
+ {% for p in post %}
+
+ <div class="card" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{p.title}}</h5>
+      <p class="card-text">{{p.description}}</p>
+      <p class="card-text">{{p.author.username}}</p>
+      <p class="card-text">{{p.timestamp}}</p>
+    </div>
+  </div>
+
+
+ {% endfor %}
+    
+ 
+    
+
+
+
+</form>
+    
 
 
 {% endblock %}
