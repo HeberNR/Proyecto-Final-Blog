@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Post
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,UpdateView
 from .forms import PostForm
 from django.urls import reverse
 
