@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+<form action="" method="post"> {% csrf_token %}
+ 
+    {% for field in form  %}
+    <div class="form-group">
+      <label for="">{{field.label}}</label>
+      {{field}}
+   </div>
+    {% endfor %}
+    
+<button type="submit">Crear</button>    
+    
+       
+   
+   
+   
+   </form>
+    
+{% endblock contenido %}
+    
