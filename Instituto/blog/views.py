@@ -25,15 +25,15 @@ class CrearPost(CreateView):
         return reverse ("inicio")
 
 
-class BlogDetail(TemplateView):
-    model: Post
-    template_name: "details.html"
+# class BlogDetail(TemplateView):
+#     model: Post
+#     template_name: "details.html"
 
 
     
-    def get_context_data(self, **kwargs):
-        context = super(Comment, self).get_context_data(**kwargs)
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super(Comment, self).get_context_data(**kwargs)
+#         return context
     
 
 
