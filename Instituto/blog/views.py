@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Post
+from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView,UpdateView
 from .forms import PostForm
 from django.urls import reverse
@@ -22,4 +23,17 @@ class CrearPost(CreateView):
 
     def get_success_url(self, **kwargs):
         return reverse ("inicio")
+
+
+class BlogDetail(TemplateView):
+    model: Post
+    template_name: "details.html"
+
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(Comment, self).get_context_data(**kwargs)
+        return context
+    
+
 
