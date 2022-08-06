@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuario.apps.UsuarioConfig',
     'blog.apps.BlogConfig',
+    'mixin'
 ]
 
 MIDDLEWARE = [
