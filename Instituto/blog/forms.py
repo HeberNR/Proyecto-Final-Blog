@@ -1,3 +1,4 @@
+from cProfile import label
 from django import forms
 from .models import Post, Comment
 
@@ -15,8 +16,11 @@ class PostForm(forms.ModelForm):
 class CommentPost(forms.ModelForm):
     class Meta : 
         model=Comment
-        fields= ["posts","content"]
-        widgets = {            
-            "content": forms.Textarea(attrs={"class": "form-control"})
+        fields= ["content"]
+        widgets = {
+            'content': forms.Textarea(attrs={'class': 'form-control', }),
         }
-
+    
+    def __init__(self, *args, **kwargs):
+        super(CommentPost, self).__init__(*args, **kwargs)
+        self.fields['content'].label = ""

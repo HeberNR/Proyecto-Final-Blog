@@ -44,7 +44,7 @@ class Comment(models.Model):
     content = models.TextField()
     timestamp = models.DateTimeField(default = timezone.now)
     author = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name = 'autor_commentario')
-    posts = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_comentario')
+    posts = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
 
     def __str__(self):
         return f"{self.content}"
