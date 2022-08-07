@@ -36,7 +36,13 @@
     
             <hr>
             
+            {% if  post.image%}
+            
             <img src="{{post.image.url}}" alt="">
+            {% else %}
+            <img src="" alt="">
+            {% endif %}
+              
             
             <p>{{post.content|linebreaks}}</p>
             

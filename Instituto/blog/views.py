@@ -128,7 +128,7 @@ class PostUpdate(StaffRequiredMixin,UpdateView):
 
 class PostDelete(DeleteView,LoginRequiredMixin,StaffRequiredMixin):
     model = Post
-    success_url = 'inicio'
+    success_url = '/inicio/'
     
 
 
