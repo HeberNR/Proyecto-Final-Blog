@@ -59,8 +59,10 @@
              
              {% if comments %}
              {% for c in comments   %}
-              
+              <hr>
+             <p>{{c.author}}</p>
              <p>{{c}}</p>
+             <hr>
              {% endfor %}
              <hr>
              {% else %}
