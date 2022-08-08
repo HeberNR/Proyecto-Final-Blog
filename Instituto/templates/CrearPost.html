@@ -5,23 +5,15 @@
 
 {% block contenido %}
 
-<form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
- 
-    {% for field in form  %}
-    <div class="form-group">
-      <label for="">{{field.label}}</label>
-      {{field}}
-   </div>
-    {% endfor %}
-    
-<button type="submit">Crear</button>    
-    
-       
-   
-   
 
-   
+   <form action="" method="post" enctype="multipart/form-data"> 
+      {% csrf_token %}
+      {{form.as-p}}
+
+      <button class="btn btn-secundary">crear</button>
+      
+
    </form>
-    
+
 {% endblock contenido %}
     

@@ -45,6 +45,11 @@
               <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'login'%}">iniciar sesion</a></button>
               {% endif %}
               
+              
+              {% if request.user.is_staff %}
+              <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'crear'%}">crear post</a></button>
+              {% endif %}
+                
           </div>
         </div>
       </nav>

@@ -8,9 +8,17 @@ class PostForm(forms.ModelForm):
     class Meta : 
         model=Post
         fields= ["title",'image', "content", "description",'category']
+        widgets = {
+            "title": forms.TextInput(attrs={'class': 'form-control', }),
+            'image': forms.Select(attrs={'class': 'form-control', }),
+            "content": forms.Textarea(attrs={'class': 'form-control', }),
+            "description": forms.Textarea(attrs={'class': 'form-control', }),
+            'category': forms.Select(attrs={'class': 'form-control', }),
+        }
     
     def __init__(self, usuario_id, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
+        
 
 
 class CommentPost(forms.ModelForm):
