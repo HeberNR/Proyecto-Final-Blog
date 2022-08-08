@@ -10,16 +10,6 @@ from django.urls import reverse, reverse_lazy
 
 
 
-# Create your views here.
-
-# def inicio (request):
-#     post = Post.objects.all() 
-#     ctx = {
-#         "post" : post
-#     }
-
-#     return render (request, 'inicio.html', ctx)
-
 
 class Inicio(ListView):
     model = Post
@@ -53,7 +43,6 @@ class CrearPost(LoginRequiredMixin,StaffRequiredMixin,CreateView):
 class BlogDetail(DetailView):
     model = Post
     template_name: 'details.html'
-    form_class = CommentPost
     form = CommentPost
     def get_context_data(self, **kwargs):
         
@@ -92,10 +81,7 @@ class PostUpdate(StaffRequiredMixin,UpdateView):
     model = Post
     fields = ['title','content','category']
 
-
     def get_absolute_url(self):
-        
-        
         
         return reverse('inicio')
     
