@@ -32,7 +32,10 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'core',
     'django_filters',
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,7 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'es-es'
+LANGUAGE_CODE = 'es-ar'
 
 TIME_ZONE = 'America/Argentina/Buenos_Aires'
 

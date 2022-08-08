@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+ 
+<form action="" method="post" enctype="multipart/form-data"> {% csrf_token %}
+    <div class="container">
+        <div class="row">
+           <div class="col">
+                {{form.title}}
+                {{form.image}}
+                {{form.description}}
+        </div>
+            </div>
+        <div class="row">
+            <div class="col">
+                {{form.content}}
+                {{form.category}}
+            </div>
+        </div>
+    </div>
+</form>
+        
+            
+{% endblock contenido %}

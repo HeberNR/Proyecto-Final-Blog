@@ -1,5 +1,7 @@
 {% extends 'base/base.html' %}
 
+
+
 {% block contenido %}
 {% if messages %}
 <ul class="messages">
@@ -12,14 +14,13 @@
 </ul>
 {% endif %}
 
-BIENVENIDO {{user.first_name}}
-
 <form action="" method="post"> {% csrf_token %}
 
   
  {% for p in post %}
 
  <div class="card" style="width: 18rem;">
+
 
   {% if p.image %}
   {% load static %}
@@ -37,6 +38,7 @@ BIENVENIDO {{user.first_name}}
       <p class="card-text">Creado el {{p.timestamp}}</p>
     </div>
   </div>
+
 
 
  {% endfor %}
