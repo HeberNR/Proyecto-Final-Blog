@@ -1,0 +1,91 @@
+{% extends 'base/base.html' %}
+
+{% block contenido %}
+
+
+<div class="card" style="width: 100vw;">
+<!-- 
+    {% if p.image %}
+    {% load static %}
+    <img class="logo-equipo" src="{{p.image.url}}" class="card-img-top" width="50px" height="50px">
+    {% else %}
+    <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
+    {% endif %}-->
+
+
+    <div class="container">
+
+        <div class="row">
+    
+   
+          <div class="col-lg-8">
+    
+  
+            <h1 class="mt-4">{{post.title}}</h1>
+    
+       
+            <p class="lead">
+              Creado por
+              <a href="#">{{post.author}}</a>
+            </p>
+    
+            <hr>
+    
+         
+            <p>Creado el {{post.timestamp|date:'d F Y '}}</p>
+    
+            <hr>
+            
+            {% if  post.image%}
+            
+            <img src="{{post.image.url}}" alt="">
+            {% else %}
+            <img src="" alt="">
+            {% endif %}
+              
+            
+            <p>{{post.content|linebreaks}}</p>
+            
+            
+            {% if request.user.is_staff %}
+            <button type="button" class="btn btn-success text-light"><a class="text-white" href="{% url 'editar' post.id %}" style="text-decoration: none;">Editar</a></button>
+
+            <button type="button" class="btn btn-danger"><a class="text-white" href="{% url 'borrar' post.id %}" style="text-decoration: none;">Borrar</a></button>
+            
+            {% endif %}
+            <hr>
+            
+            <h4>Comentarios</h4>
+             
+             {% if comments %}
+             {% for c in comments   %}
+              <hr>
+             <p>{{c.author}}</p>
+             <p>{{c}}</p>
+             <hr>
+             {% endfor %}
+             <hr>
+             {% else %}
+             <h5>No hay comentarios aun ¡Sé el primero!</h5>
+             {% endif %}
+              
+              
+         
+
+
+            {% include 'includes/add_comment.html' %}
+        
+          {% endblock contenido %}           
+  
+     
+          </form>
+
+      </div>
+    </div>
+  </div>
+
+ 
+
+
+
+

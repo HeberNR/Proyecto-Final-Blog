@@ -1,25 +1,111 @@
-from django.shortcuts import render
-from .models import Post
-from django.views.generic.edit import CreateView,UpdateView
-from .forms import PostForm
-from django.urls import reverse
+
+from django.shortcuts import render,get_object_or_404,redirect
+from django.views.generic import DetailView,ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Post, Comment
+from core.mixins import StaffRequiredMixin
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from .forms import CommentPost, PostForm
+from django.urls import reverse, reverse_lazy
+
+
 
 # Create your views here.
 
-def inicio (request):
-    post = Post.objects.all() 
-    ctx = {
-        "post" : post
-    }
+# def inicio (request):
+#     post = Post.objects.all() 
+#     ctx = {
+#         "post" : post
+#     }
 
-    return render (request, 'inicio.html', ctx)
+#     return render (request, 'inicio.html', ctx)
 
 
-class CrearPost(CreateView):
+class Inicio(ListView):
+    model = Post
+    template_name: 'inicio.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post'] = Post.objects.all()
+        return context
+    
+
+class CrearPost(LoginRequiredMixin,StaffRequiredMixin,CreateView):
     model = Post
     form_class = PostForm
     template_name = "CrearPost.html"
+    success_url: '/inicio/'
 
-    def get_success_url(self, **kwargs):
-        return reverse ("inicio")
+    def form_valid(self, form):
+        f = form.save(commit=False)
+        f.author_id = self.request.user.id
+        return super(CrearPost,self).form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs=super(CrearPost, self).get_form_kwargs()  
+        kwargs["usuario_id"]=self.request.user.id
+        return kwargs
+
+
+
+
+class BlogDetail(DetailView):
+    model = Post
+    template_name: 'details.html'
+    form_class = CommentPost
+    form = CommentPost
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form
+        context['comments'] = self.object.comments.all()
+        return context
+
+
+    def post(self, request, *args, **kwargs):
+        form = CommentPost(request.POST)
+        if form.is_valid():
+            post = self.get_object()
+            form.instance.author = self.request.user
+            form.instance.posts = post
+            form.save()
+            return redirect(reverse('details', kwargs={'pk': post.id}))    
+        else:
+            return self.form_invalid(form)
+
+    def get_success_url(self):
+        return reverse('details', kwargs = {'pk': self.object.id})
+    
+
+
+
+
+
+
+
+
+    
+
+
+class PostUpdate(StaffRequiredMixin,UpdateView):
+    model = Post
+    fields = ['title','content','category']
+
+
+    def get_absolute_url(self):
+        
+        
+        
+        return reverse('inicio')
+    
+
+class PostDelete(DeleteView,LoginRequiredMixin,StaffRequiredMixin):
+    model = Post
+    success_url = '/inicio/'
+    
+
+
+
+
 
