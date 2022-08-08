@@ -1,4 +1,5 @@
 from cProfile import label
+from tkinter.ttk import LabeledScale
 from django import forms
 from .models import Post, Comment
 
@@ -9,11 +10,19 @@ class PostForm(forms.ModelForm):
         model=Post
         fields= ["title",'image', "content", "description",'category']
         widgets = {
-            "title": forms.TextInput(attrs={'class': 'form-control', }),
-            'image': forms.Select(attrs={'class': 'form-control', }),
-            "content": forms.Textarea(attrs={'class': 'form-control', }),
-            "description": forms.Textarea(attrs={'class': 'form-control', }),
+            'title': forms.TextInput(attrs={'class': 'form-control', }),
+            
+            'content': forms.Textarea(attrs={'class': 'form-control content', }),
+            'description': forms.TextInput(attrs={'class': 'form-control', }),
             'category': forms.Select(attrs={'class': 'form-control', }),
+
+        } 
+        labels = {
+            'title': 'Titulo',
+            'image': 'Imagen',
+            'content': 'contenido',
+            'description': 'descripcion',
+            'category': 'categoria',
         }
     
     def __init__(self, usuario_id, *args, **kwargs):

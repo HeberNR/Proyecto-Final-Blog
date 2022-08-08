@@ -41,7 +41,7 @@
               {% if request.user.is_authenticated %}
               <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'logout'%}">cerrar sesion</a></button>
               {% else %}
-  
+              <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'registro'%}">registrarse</a></button>
               <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'login'%}">iniciar sesion</a></button>
               {% endif %}
               
