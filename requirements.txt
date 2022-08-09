@@ -4,7 +4,6 @@ Django==4.0.6
 django-crispy-forms==1.14.0
 django-filter==22.1
 filelock==3.7.1
-mysql-connector-python==8.0.29
 mysqlclient==2.1.1
 Pillow==9.2.0
 platformdirs==2.5.2

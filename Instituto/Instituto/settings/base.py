@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'usuario.apps.UsuarioConfig',
     'blog.apps.BlogConfig',
     'core',
-    'django_filters',
     'crispy_forms'
 ]
 
@@ -100,7 +99,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOGIN_URL ='/login'
-LOGIN_REDIRECT_URL = '/inicio'
+LOGIN_REDIRECT_URL = '/'
 
 
 MEDIA_URL = "/media/"

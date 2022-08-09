@@ -25,7 +25,7 @@ class CrearPost(LoginRequiredMixin,StaffRequiredMixin,CreateView):
     model = Post
     form_class = PostForm
     template_name = "CrearPost.html"
-    success_url: '/inicio/'
+    success_url: '/'
 
     def form_valid(self, form):
         f = form.save(commit=False)
@@ -88,7 +88,7 @@ class PostUpdate(StaffRequiredMixin,UpdateView):
 
 class PostDelete(DeleteView,LoginRequiredMixin,StaffRequiredMixin):
     model = Post
-    success_url = '/inicio/'
+    success_url = '/'
     
 
 

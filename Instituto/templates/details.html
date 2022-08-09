@@ -20,10 +20,9 @@
    
           <div class="col-lg-8">
     
-  
+            <span class="badge badge-success"></span>
             <h1 class="mt-4">{{post.title}}</h1>
-    
-       
+            
             <p class="lead">
               Creado por
               <a href="#">{{post.author}}</a>
@@ -60,7 +59,8 @@
              {% if comments %}
              {% for c in comments   %}
               <hr>
-             <p>{{c.author}}</p>
+              <b><p>{{c.author}}</p></b>
+             <p>{{c.timestamp|date:'Y-m-d H:i:s'}}</p>
              <p>{{c}}</p>
              <hr>
              {% endfor %}
