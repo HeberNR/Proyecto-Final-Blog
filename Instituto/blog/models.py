@@ -17,7 +17,7 @@ class Post(models.Model):
     timestamp = models.DateTimeField(default = timezone.now)
     content = models.TextField()
     image = models.ImageField(upload_to= 'uploads_post', null = True, blank = True)
-    slug = models.SlugField(unique=True,null=False)
+    
     # state = models.BooleanField(default = False)
     category = models.ForeignKey(Category, null=True,on_delete=models.DO_NOTHING, blank= False,related_name='categoria_post') #cambiar blank a "False"
     description = models.CharField(max_length=200)
