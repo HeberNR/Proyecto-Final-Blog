@@ -1,5 +1,3 @@
-from cProfile import label
-from tkinter.ttk import LabeledScale
 from django import forms
 from .models import Post, Comment
 

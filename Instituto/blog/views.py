@@ -1,6 +1,7 @@
 
+from pipes import Template
 from django.shortcuts import render,get_object_or_404,redirect
-from django.views.generic import DetailView,ListView
+from django.views.generic import DetailView,ListView,TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Comment
 from core.mixins import StaffRequiredMixin
@@ -13,7 +14,7 @@ from django.urls import reverse, reverse_lazy
 
 class Inicio(ListView):
     model = Post
-    template_name: 'inicio.html'
+    template_name= 'inicio.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -25,7 +26,7 @@ class CrearPost(LoginRequiredMixin,StaffRequiredMixin,CreateView):
     model = Post
     form_class = PostForm
     template_name = "CrearPost.html"
-    success_url: '/'
+    success_url= '/'
 
     def form_valid(self, form):
         f = form.save(commit=False)
@@ -42,7 +43,7 @@ class CrearPost(LoginRequiredMixin,StaffRequiredMixin,CreateView):
 
 class BlogDetail(DetailView):
     model = Post
-    template_name: 'details.html'
+    template_name= 'details.html'
     form = CommentPost
     def get_context_data(self, **kwargs):
         
@@ -69,12 +70,7 @@ class BlogDetail(DetailView):
 
 
 
-
-
-
-
-
-    
+ 
 
 
 class PostUpdate(StaffRequiredMixin,UpdateView):
@@ -93,5 +89,16 @@ class PostDelete(DeleteView,LoginRequiredMixin,StaffRequiredMixin):
 
 
 
+class Mision(TemplateView):
+    template_name = 'mision.html'
+    
 
+    def get_success_url(self):
+        return reverse('mision')
 
+class Nosotros(TemplateView):
+    template_name = 'quienesomos.html'
+    
+    def get_success_url(self):
+    
+        return reverse('nosotros')
