@@ -9,26 +9,25 @@ BIENVENIDO {{user.first_name}}
  
  {% for p in post %}
 
- <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 18rem;">
 
-  {% if p.image %}
-  {% load static %}
-  <img class="logo-equipo" src="{{p.image.url}}" class="card-img-top">
-  {% else %}
-  <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
-  {% endif %}
+      {% if p.image %}
+      {% load static %}
+      <img class="logo-equipo" src="{{p.image.url}}" class="card-img-top">
+      {% else %}
+      <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
+      {% endif %}
 
+        <div class="card-body">
+          <h5 class="card-title">{{p.title}}</h5>
+          <p class="card-text">{{p.description}}</p>
+          <p class="card-text">{{p.author.username}}</p>
+          <p class="card-text">{{p.timestamp}}</p>
+        </div>
 
+        
 
-
-    <div class="card-body">
-      <h5 class="card-title">{{p.title}}</h5>
-      <p class="card-text">{{p.description}}</p>
-      <p class="card-text">{{p.author.username}}</p>
-      <p class="card-text">{{p.timestamp}}</p>
     </div>
-  </div>
-
 
  {% endfor %}
     
