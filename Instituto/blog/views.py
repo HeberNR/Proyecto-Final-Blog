@@ -1,6 +1,7 @@
 
+from pipes import Template
 from django.shortcuts import render,get_object_or_404,redirect
-from django.views.generic import DetailView,ListView
+from django.views.generic import DetailView,ListView,TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Comment
 from core.mixins import StaffRequiredMixin
@@ -69,12 +70,7 @@ class BlogDetail(DetailView):
 
 
 
-
-
-
-
-
-    
+ 
 
 
 class PostUpdate(StaffRequiredMixin,UpdateView):
@@ -93,5 +89,16 @@ class PostDelete(DeleteView,LoginRequiredMixin,StaffRequiredMixin):
 
 
 
+class Mision(TemplateView):
+    template_name = 'mision.html'
+    
 
+    def get_success_url(self):
+        return reverse('mision')
 
+class Nosotros(TemplateView):
+    template_name = 'quienesomos.html'
+    
+    def get_success_url(self):
+    
+        return reverse('nosotros')
