@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+<form method="post"> {% csrf_token %}
+   {% include 'includes/errorforms.html' %}
+    {% for field in form  %}
+    <div class="form-group">
+      <label for="">{{field.label}}</label>
+      <div class="form-control">
+      {{field}}
+   </div>
+   </div>
+    {% endfor %}
+    
+<<<<<<< HEAD:Instituto/templates/Comentario.html
+<button type="submit">Comentar</button>    
+=======
+    <button type="submit" class="btn btn-success">Guardar cambios</button>
+>>>>>>> ce370fbc8230c42eeaa52f984c59d00f5aa4ec52:Instituto/templates/edit.html
+    
+       
+   
+   
+   
+   </form>
+    
+{% endblock contenido %}
+    

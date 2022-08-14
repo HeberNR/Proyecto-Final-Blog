@@ -30,7 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuario.apps.UsuarioConfig',
     'blog.apps.BlogConfig',
+    'core',
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,7 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'es-es'
+LANGUAGE_CODE = 'es-ar'
 
 TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
@@ -95,7 +99,7 @@ USE_I18N = True
 USE_TZ = True
 
 LOGIN_URL ='/login'
-LOGIN_REDIRECT_URL = '/inicio'
+LOGIN_REDIRECT_URL = '/'
 
 
 MEDIA_URL = "/media/"

@@ -1,3 +1,7 @@
 *.pyc
 
 local.py
+
+
+*.jpg
+*.png

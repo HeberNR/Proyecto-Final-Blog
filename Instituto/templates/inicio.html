@@ -1,22 +1,43 @@
 {% extends 'base/base.html' %}
 
+
+
 {% block contenido %}
-
-
-BIENVENIDO {{user.first_name}}
+<h1 class="hola">a</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-secondary" role="alert">
+      
+      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
 
 <form action="" method="post"> {% csrf_token %}
- 
+
+  
  {% for p in post %}
 
   <div class="card" style="width: 18rem;">
 
+<<<<<<< HEAD
       {% if p.image %}
       {% load static %}
       <img class="logo-equipo" src="{{p.image.url}}" class="card-img-top">
       {% else %}
       <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
       {% endif %}
+=======
+
+  {% if p.image %}
+  {% load static %}
+  <img class="" src="{{p.image.url}}" class="card-img-top">
+  {% else %}
+  <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
+  {% endif %}
+>>>>>>> ce370fbc8230c42eeaa52f984c59d00f5aa4ec52
 
         <div class="card-body">
           <h5 class="card-title">{{p.title}}</h5>
@@ -27,7 +48,16 @@ BIENVENIDO {{user.first_name}}
 
         
 
+<<<<<<< HEAD
+=======
+    <div class="card-body">
+      <h5 class="card-title"><a href="{% url 'details' p.id %}">{{p.title}}</a></h5>
+      <p class="card-text">{{p.description}}</p>
+      <p class="card-text">Creado por {{p.author.username}}</p>
+      <p class="card-text">Creado el {{p.timestamp}}</p>
+>>>>>>> ce370fbc8230c42eeaa52f984c59d00f5aa4ec52
     </div>
+
 
  {% endfor %}
     
