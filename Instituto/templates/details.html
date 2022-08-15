@@ -3,22 +3,12 @@
 {% block contenido %}
 
 
-<div class="card" style="width: 100vw;">
-<!-- 
-    {% if p.image %}
-    {% load static %}
-    <img class="logo-equipo" src="{{p.image.url}}" class="card-img-top" width="50px" height="50px">
-    {% else %}
-    <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
-    {% endif %}-->
 
 
-    <div class="container">
-
-        <div class="row">
+        <div class="">
     
    
-          <div class="col-lg-8">
+          <div class="col-8">
     
             <span class="badge badge-success"></span>
             <h1 class="mt-4">{{post.title}}</h1>
@@ -75,15 +65,14 @@
              
              {% include 'includes/add_comment.html' %}
         
-          {% endblock contenido %}           
-  
-     
-          </form>
-
-      </div>
-    </div>
-  </div>
-
+             
+             
+            
+            
+          </div>
+        </div>
+   
+{% endblock contenido %}           
  
 
 
