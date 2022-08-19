@@ -1,7 +1,9 @@
+from xml.etree.ElementInclude import include
 from django.db import models
 from django.utils import timezone
 from usuario.models import Usuario
 from django.urls import reverse
+
 
 
 
@@ -47,4 +49,8 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.content}"
+
+
+
+
 

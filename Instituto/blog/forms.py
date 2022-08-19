@@ -39,3 +39,7 @@ class CommentPost(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CommentPost, self).__init__(*args, **kwargs)
         self.fields['content'].label = ""
+
+
+
+

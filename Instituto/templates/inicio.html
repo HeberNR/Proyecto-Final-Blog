@@ -3,54 +3,50 @@
 
 
 {% block contenido %}
-<h1 class="hola">a</h1>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <div class="alert alert-secondary" role="alert">
-      
-      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-    </div>
-    {% endfor %}
-</ul>
-{% endif %}
 
-<form action="" method="post"> {% csrf_token %}
-
-  
- {% for p in post %}
-
- <div class="card" style="width: 18rem;">
-
-
-  {% if p.image %}
-  {% load static %}
-  <img class="" src="{{p.image.url}}" class="card-img-top">
-  {% else %}
-  <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
-  {% endif %}
-
-
-
-    <div class="card-body">
-      <h5 class="card-title"><a href="{% url 'details' p.id %}">{{p.title}}</a></h5>
-      <p class="card-text">{{p.description}}</p>
-      <p class="card-text">Creado por {{p.author.username}}</p>
-      <p class="card-text">Creado el {{p.timestamp}}</p>
-    </div>
-  </div>
-
-
-
- {% endfor %}
-    
- 
-    
-
-
+<form action="" method="get">
+  {{filter.form}}
+  <button type="submit">Algo</button>
 
 </form>
-    
 
+{% for f in filter.qs %}
+
+  <div class="card" style="width: 18rem;">
+
+
+    {% if post.image %}
+    {% load static %}
+    <img class="" src="{{f.image.url}}" class="card-img-top">
+    {% else %}
+    <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
+    {% endif %}
+
+
+
+      <div class="card-body">
+        <h5 class="card-title"><a href="{% url 'details' f.id %}">{{f.title}}</a></h5>
+        <p class="card-text">{{f.description}}</p>
+        <p class="card-text">Creado por {{f.author.username}}</p>
+        <p class="card-text">Creado el {{f.timestamp}}</p>
+      </div>
+    </div>
+
+  
+  {% endfor %}
+
+  <h1 class="hola"></h1>
+  {% if messages %}
+  <ul class="messages">
+      {% for message in messages %}
+      <div class="alert alert-secondary" role="alert">
+        
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+      </div>
+      {% endfor %}
+  </ul>
+  {% endif %}
+
+     
 
 {% endblock %}

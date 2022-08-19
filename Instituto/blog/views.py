@@ -8,7 +8,7 @@ from core.mixins import StaffRequiredMixin
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .forms import CommentPost, PostForm
 from django.urls import reverse, reverse_lazy
-
+from .filters import Filter
 
 
 
@@ -16,9 +16,16 @@ class Inicio(ListView):
     model = Post
     template_name= 'inicio.html'
 
-    def get_context_data(self, **kwargs):
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        filter = Filter(self.request.GET, queryset)
+        return filter.qs
+        
+
+    def get_context_data(self, **kwargs):              
         context = super().get_context_data(**kwargs)
         context['post'] = Post.objects.all()
+        context['filter'] = Filter(self.request.GET, queryset=self.get_queryset())
         return context
     
 
@@ -66,9 +73,6 @@ class BlogDetail(DetailView):
 
     def get_success_url(self):
         return reverse('details', kwargs = {'pk': self.object.id})
-    
-
-
 
  
 
