@@ -79,11 +79,17 @@ class BlogDetail(DetailView):
 
 class PostUpdate(StaffRequiredMixin,UpdateView):
     model = Post
-    fields = ['title','content','category']
+    form_class= PostForm
+    # fields = ['title','content','category']
 
     def get_absolute_url(self):
         
         return reverse('inicio')
+    
+    def get_form_kwargs(self):
+        kwargs=super(PostUpdate, self).get_form_kwargs()  
+        kwargs["usuario_id"]=self.request.user.id
+        return kwargs
     
 
 class PostDelete(DeleteView,LoginRequiredMixin,StaffRequiredMixin):
