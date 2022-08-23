@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+}
+.header .nav-item li{
+    transition: all 0.3s ease 0s;
+}
+.header .nav-item li:hover{
+    transform: scale(1.1);
+}
+.content {
+    resize: none;
+}
+
+.margentop{
+    margin-top: 80px;
+}

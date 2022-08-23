@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+   <div class="container ">
+      <div class="row justify-content-center ">
+         <div class="col-6">
+            <form action="" method="post" enctype="multipart/form-data"> 
+               {% csrf_token %}
+               {% include 'includes/errorforms.html' %}
+               {% for field in form  %}
+               <div class="form-group">
+                  <label for="">{{field.label}}</label>
+                     <div class="p-3 ">
+                        {{field}}
+                     </div>
+               </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-success">Guardar cambios</button>
+               
+               
+
+               
+            </form>
+         </div> 
+      </div>
+   </div>
+    
+{% endblock contenido %}
+    

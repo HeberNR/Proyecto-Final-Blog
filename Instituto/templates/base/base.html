@@ -1,133 +1,119 @@
-{% load static %}
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inicio</title>  
 
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Inicio</title>  
+      
+      <!-- CSS only -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <script src="https://kit.fontawesome.com/cacf351d7a.js" crossorigin="anonymous"></script>
   </head>
   <body>
-
-    <nav class="navbar navbar-expand-lg" style="background-color: #328743;">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Instituto</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Nostros</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Institucional
+    <header>
+      <nav class="navbar fixed-top navbar-expand-lg bg-dark bg-gradient ">
+        <div class="container">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+              <a class="navbar-brand" href="{%url 'inicio'%}">
+                <img src="{% static 'img/logo.png'%}" alt="Logo" width="100" > 
               </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Noticias</a></li>
-                <li><a class="dropdown-item" href="#">Carreras</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Descargas</a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Buscar</button>
-          </form>
+              <li class="nav-item">
+                <a class="nav-link active text-light"aria-current="page" href="{%url 'inicio'%}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'nosotros' %}">Quienes Somos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="{% url 'vision' %}">Misión y Visión</a>
+              </li>
+            </ul>
+              
+              {% if request.user.is_authenticated %}
+              <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'logout'%}">cerrar sesion</a></button>
+              {% else %}
+              <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'registro'%}">registrarse</a></button>
+              <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'login'%}">iniciar sesion</a></button>
+              {% endif %}
+              
+              
+              {% if request.user.is_staff %}
+              <button class="btn btn-outline-success" type="submit"><a class="nav-link text-light" href="{%url 'crear'%}">crear post</a></button>
+              {% endif %}
+                
+          </div>
         </div>
+      </nav>
+    </header>
+<body>
+
+    {% block contenido %}
+    <main>
+
+    </main>
+    {% endblock %}
+
+
+<footer class="bg-dark text-center text-white">
+
+  <div class="container p-4">
+
+
+    <section class="mb-4">
+
+      <a class="btn btn-dark btn-floating m-1" style="background-color: #3b5998;" href="https://www.facebook.com/institutobarranqueras" role="button" target="_blank"><i class="fab fa-facebook-f"></i></a>
+
+
+      <a class="btn btn-dark btn-floating m-1" style="background-color: #C5221F;" href="mailto:uep161info@educ.ar" role="button" target="_blank"><i class="fab fa-google"></i></a>
+
+
+      <a class="btn btn-dark btn-floating m-1" style="background-color: #FD00CA;" href="https://www.instagram.com/institutobarranqueras/" role="button" target="_blank"><i class="fab fa-instagram"></i></a>
+
+
+    </section>
+
+
+
+
+
+    <section class="row mb-4 justify-content-between align-items-center ">
+      <div class="col-6">
+      <h2>Encontranos</h2>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14158.25903037072!2d-58.94320379999995!3d-27.4828064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x944572ca0a69bebb%3A0xc01373947dc9a9f6!2sInstituto%20De%20Nivel%20Terciario%20%22Barranqueras%20Primero%22%20-%20UEP%20No%20161!5e0!3m2!1ses-419!2sar!4v1660594077050!5m2!1ses-419!2sar" width="450" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-    </nav>
-{% block contenido %}
+      <div class="col-6">
+        <h4>Dirección</h4>
+        <p>Diagonal Eva Perón 425 - Barranqueras</p>
+        <h4>Contacto</h4>
+        <p>Teléfono: +54 362 425 0382</p>
+        <p>Email: uep161info@educ.ar</p>
+      </div>
+    </section>
 
-{% endblock %}
 
-<div class="fixed-bottom">
 
-  <footer class="bg-light text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-      <!-- Section: Social media -->
-      <section class="mb-4">
-        <!-- Facebook -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #3b5998;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-facebook-f"></i
-        ></a>
+  </div>
+
+
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    <a class="text-white" href="https://github.com/federico42o/Proyecto-Final-Blog">GRUPO 6 - INFORMATORIO 2022</a>
+  </div>
+
+
+</footer>
   
-        <!-- Twitter -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #55acee;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-twitter"></i
-        ></a>
-  
-        <!-- Google -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #dd4b39;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-google"></i
-        ></a>
-  
-        <!-- Instagram -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #ac2bac;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-instagram"></i
-        ></a>
-  
-        <!-- Linkedin -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #0082ca;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-linkedin-in"></i
-        ></a>
-        <!-- Github -->
-        <a
-          class="btn btn-primary btn-floating m-1"
-          style="background-color: #333333;"
-          href="#!"
-          role="button"
-          ><i class="fab fa-github"></i
-        ></a>
-      </section>
-      <!-- Section: Social media -->
-    </div>
-    <!-- Grid container -->
-  
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
-      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
 <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
- 
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 
-</html>
+  
+
+  
+  </html>
