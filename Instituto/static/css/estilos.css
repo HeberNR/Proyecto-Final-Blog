@@ -2,3 +2,28 @@
     resize: none;
 }
 
+.content-box{ 
+    max-width: 80%;
+    min-height: 85vh;
+}
+.imagen {
+    max-height: 18rem;
+    object-fit: scale-down;
+}
+
+
+.filter-box{
+    background-color: #212529;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin: 10px;
+    color: #fff;
+    justify-content: space-evenly;
+    text-align: center;
+    border-radius: 5%;
+}
+
+
+

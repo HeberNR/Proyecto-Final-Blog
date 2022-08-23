@@ -68,6 +68,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Instituto.wsgi.application'
 
 
+FILTERS_EMPTY_CHOICE_LABEL = 'Cualquiera'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

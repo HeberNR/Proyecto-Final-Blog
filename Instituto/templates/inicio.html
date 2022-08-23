@@ -4,49 +4,58 @@
 
 {% block contenido %}
 
-<form action="" method="get">
-  {{filter.form}}
-  <button type="submit">Algo</button>
+<div class="container-fluid content-box">
+  <div class="row">
+    <div class="col-md-8">
+      <center>
+      {% if filter.qs%}
+      {% for f in filter.qs %}
+        <div class="card m-3" style="width: 80%;">
+          {% if f.image %}
+          {% load static %}
+            <img src="{{f.image.url}}" class="imagen" alt="..." >
+          {% else %}
+            <img src="{% static 'img/avatar.jpg' %}" class="imagen">
+          {% endif %}
 
-</form>
-
-{% for f in filter.qs %}
-
-  <div class="card" style="width: 18rem;">
-
-
-    {% if post.image %}
-    {% load static %}
-    <img class="" src="{{f.image.url}}" class="card-img-top">
-    {% else %}
-    <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
-    {% endif %}
-
-
-
-      <div class="card-body">
-        <h5 class="card-title"><a href="{% url 'details' f.id %}">{{f.title}}</a></h5>
-        <p class="card-text">{{f.description}}</p>
-        <p class="card-text">Creado por {{f.author.username}}</p>
-        <p class="card-text">Creado el {{f.timestamp}}</p>
-      </div>
-    </div>
-
-  
-  {% endfor %}
-
-  <h1 class="hola"></h1>
-  {% if messages %}
-  <ul class="messages">
-      {% for message in messages %}
-      <div class="alert alert-secondary" role="alert">
-        
-        <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-      </div>
+          <div class="card-body">
+            <h5 class="card-title">{{f.title}}</a></h5>
+            <p class="card-text">descripcion: {{f.description}}</p>
+            <p class="card-text"><small class="text-muted">Creado por: {{f.author.username}}</small></p>
+            <p class="card-text">fecha: {{f.timestamp}}</p>
+            <button type="button" class="btn btn-dark" ><a href="{% url 'details' f.id %}"style="text-decoration: none; color: #fff">Seguir leyendo</a></button>
+          </div>
+        </div>
       {% endfor %}
-  </ul>
-  {% endif %}
+      {% else %}
+      <h4>No se ha encontrado ninguna noticia relacionada.</h4>
+      {%endif%}
+    </center>
+    </div>
+    <div class="col-md-4">
+      
+        <form action="" method="get" class="m-3 filter-box">
 
-     
+            <div class="categoria">
+              <h4>Filtrar por categorias</h4>
+            {{ filter.form.category}}
+            </div>
+            <div class="fecha">
+              <h4>Filtrar por fecha</h4>
+            {{ filter.form.timestamp}}
+            </div>
 
-{% endblock %}
+          <button type="submit" class="btn btn-secondary text-light"><i class="bi bi-funnel" style="padding: 3px;"></i>Filtrar</button>
+        </form>
+
+    </div>
+  </div>
+  </div>
+
+  {% endblock %}
+  
+  {% block footer %}
+
+    {% include 'includes/footer.html' %}
+  {% endblock footer %}
+    

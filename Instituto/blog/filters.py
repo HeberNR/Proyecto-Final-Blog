@@ -1,10 +1,13 @@
-from dataclasses import field
-import django_filters
+
+from django_filters import *
 
 from .models import Post
 
-class Filter(django_filters.FilterSet):
-    
+class Filter(FilterSet):
+
+    timestamp = DateFromToRangeFilter()
+    empty_label = None
     class Meta: 
         model = Post
         fields = {'category': ['exact']}
+        

@@ -15,6 +15,7 @@ from .filters import Filter
 class Inicio(ListView):
     model = Post
     template_name= 'inicio.html'
+    paginate_by: 2
 
     def get_queryset(self):
         queryset = super().get_queryset()
