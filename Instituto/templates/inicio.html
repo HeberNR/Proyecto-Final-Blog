@@ -19,10 +19,10 @@
           {% endif %}
 
           <div class="card-body">
-            <h5 class="card-title">{{f.title}}</a></h5>
-            <p class="card-text">descripcion: {{f.description}}</p>
-            <p class="card-text"><small class="text-muted">Creado por: {{f.author.username}}</small></p>
-            <p class="card-text">fecha: {{f.timestamp}}</p>
+            <h3 class="card-title">{{f.title | title}}</h3>
+            <p class="card-text">{{f.description }}</p>
+            <p class="card-text"><i class="bi bi-pen-fill m-1"></i><small class="text-muted">{{f.author.username}}</small></p>
+            <p class="card-text"><i class="bi bi-clock-fill m-1"></i>{{f.timestamp|timesince}}</p>
             <button type="button" class="btn btn-dark" ><a href="{% url 'details' f.id %}"style="text-decoration: none; color: #fff">Seguir leyendo</a></button>
           </div>
         </div>
