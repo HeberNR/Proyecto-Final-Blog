@@ -1,10 +1,14 @@
 {% extends 'base/base.html' %}
 
+{% block title %}
+<title>Editar</title>  
+{% endblock title %}
+   
 {% load static %}
 
 
 {% block contenido %}
-   <div class="container ">
+   <div class="container margentop">
       <div class="row justify-content-center ">
          <div class="col-6">
             <form action="" method="post" enctype="multipart/form-data"> 
@@ -12,13 +16,13 @@
                {% include 'includes/errorforms.html' %}
                {% for field in form  %}
                <div class="form-group">
-                  <label for="">{{field.label}}</label>
+                  <label for="" class="fw-bold" >{{field.label}}</label>
                      <div class="p-3 ">
                         {{field}}
                      </div>
                </div>
                 {% endfor %}
-                <button type="submit" class="btn btn-success">Guardar cambios</button>
+                <button type="submit" class="btn" style="background-color: #79AD40;" >Guardar cambios</button>
                
                
 

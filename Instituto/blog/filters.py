@@ -5,8 +5,7 @@ from .models import Post
 
 class Filter(FilterSet):
 
-    timestamp = DateFromToRangeFilter()
-    empty_label = None
+    timestamp = DateRangeFilter()
     class Meta: 
         model = Post
         fields = {'category': ['exact']}
