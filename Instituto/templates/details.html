@@ -5,56 +5,77 @@
 
 
 
-        <div class="margentop">
+        <div class="container margentop content-box">
     
-   
+          <div class="row justify-content-center">
           <div class="col-8">
-    
-            <span class="badge badge-success"></span>
-            <h1 class="mt-4">{{post.title}}</h1>
+            <span class="badge mb-3" style="background-color: #73B9E9; font-size: 20px;">#{{post.category}}</span>
+
             
-            <p class="lead">
-              Creado por
-              <a href="#">{{post.author}}</a>
-            </p>
-    
-            <hr>
-    
-         
-            <p>Creado el {{post.timestamp|date:'d F Y '}}</p>
-    
-            <hr>
+            <div class="info d-flex justify-content-between">
+            <p><small>Creado por </small><a href="#" class="text-decoration-none fw-bold" style="color: #79AD40;">{{post.author | upper }}</a></p>
+
+            <p>{{post.timestamp|date:'d F Y '}}</p>
+            </div>
+            <div class="post d-flex flex-column p-3 mb-3">
+            <h1 class="mb-3 post-titulo fw-bold">{{post.title | upper}}</h1>
             
             {% if  post.image%}
             
-            <img src="{{post.image.url}}" alt="">
+            <img src="{{post.image.url}}" alt="" width="60%"  class="post-imagen" >
             {% else %}
             <img src="" alt="">
             {% endif %}
               
             
-            <p>{{post.content|linebreaks}}</p>
-            
-            
-            {% if request.user.is_staff %}
-            <button type="button" class="btn btn-success text-light"><a class="text-white" href="{% url 'editar' post.id %}" style="text-decoration: none;">Editar</a></button>
+            <p class="mt-3">{{post.content|linebreaks}}</p>
 
-            <button type="button" class="btn btn-danger"><a class="text-white" href="{% url 'borrar' post.id %}" style="text-decoration: none;">Borrar</a></button>
-            
+            {% if request.user.is_staff %}
+            <div class="post-btn">
+            <button type="button" class="btn text-light post-btn" style="background-color: #79AD40;"><a class="text-white" href="{% url 'editar' post.id %}" style="text-decoration: none;">Editar</a></button>
+
+            <button type="button" class="btn post-btn" style="background-color: #73B9E9;"><a class="text-white" href="{% url 'borrar' post.id %}" style="text-decoration: none;">Borrar</a></button>
+            </div>
             {% endif %}
-            <hr>
+            </div>
             
-            <h4>Comentarios</h4>
+
              
              {% if comments %}
-             {% for c in comments   %}
-              <hr>
-              <b><p>{{c.author}}</p></b>
-             <p>{{c.timestamp|date:'Y-m-d H:i:s'}}</p>
-             <p>{{c}}</p>
-             <hr>
-             {% endfor %}
-             <hr>
+             <section style="background-color: #d8dce2;">
+              
+              <div class="container my-5 py-5 text-dark">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-md-12 col-lg-10 col-xl-8">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h4 class="text-dark mb-0">Comentarios</h4>
+                    </div>
+                    {% for c in comments   %}
+                    
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <div class="d-flex flex-start">
+                          {% load static %}
+                          <img class="rounded-circle shadow-1-strong me-3"
+                            src="{% static 'img/avatar.jpg' %}" alt="avatar" width="40"
+                            height="40" />
+                          <div class="w-100">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                              <h6 class="text-primary fw-bold mb-0 mt-2">
+                                {{c.author}}
+                                <span class="text-dark ms-2">{{c}}</span>
+                              </h6>
+                              <p class="mb-0">{{c.timestamp|timesince}}</p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                            </div>
+                          </div>
+                        </div>
+                      
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </section>
              {% else %}
              <h5>No hay comentarios aún ¡Sé el primero!</h5>
              {% endif %}
@@ -67,13 +88,24 @@
         
              
              
-            
-            
+             
+            </div>
           </div>
         </div>
+      </div>
    
 {% endblock contenido %}           
  
+
+
+{% block footer %}
+
+{% include 'includes/footer.html' %}
+{% endblock footer %}
+
+
+
+
 
 
 

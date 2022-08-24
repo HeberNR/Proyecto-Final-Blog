@@ -15,7 +15,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    timestamp = models.DateTimeField(default = timezone.now)
+    timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     image = models.ImageField(upload_to= 'uploads_post', null = True, blank = True)
     # slug = models.SlugField(unique=True,null=False)

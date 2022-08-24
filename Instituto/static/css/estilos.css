@@ -44,3 +44,23 @@
 
 
 
+.post{
+    color: #1d1d1d;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+.post-titulo{
+    text-align: center;
+
+}
+.post-imagen{
+    align-self: center;
+}
+.info{
+
+    align-self: flex-end;
+}
+
+.post-btn{
+    align-self: flex-end;
+}
