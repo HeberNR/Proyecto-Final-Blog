@@ -42,6 +42,7 @@
 
              
              {% if comments %}
+             {% load humanize %}
              <section style="background-color: #d8dce2;">
               
               <div class="container my-5 py-5 text-dark">
@@ -65,7 +66,7 @@
                                 {{c.author}}
                                 <span class="text-dark ms-2">{{c}}</span>
                               </h6>
-                              <p class="mb-0">{{c.timestamp|timesince}}</p>
+                              <p class="mb-0">{{c.timestamp|naturaltime|title}}</p>
                             </div>
                             <div class="d-flex justify-content-between align-items-center">
                             </div>
