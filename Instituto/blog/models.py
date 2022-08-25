@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from xml.etree.ElementInclude import include
 from django.db import models
 from django.utils import timezone
@@ -52,5 +53,7 @@ class Comment(models.Model):
 
 
 
-
+class Archivos(models.Model):
+    nombre = models.CharField(max_length=200)
+    archivo = models.FileField(upload_to = 'archivos' )
 

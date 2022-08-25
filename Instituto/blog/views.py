@@ -3,7 +3,7 @@ from pipes import Template
 from django.shortcuts import render,get_object_or_404,redirect
 from django.views.generic import DetailView,ListView,TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post, Comment
+from .models import Post, Comment, Archivos
 from core.mixins import StaffRequiredMixin
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .forms import CommentPost, PostForm
@@ -115,3 +115,27 @@ class Nosotros(TemplateView):
     def get_success_url(self):
     
         return reverse('nosotros')
+
+
+
+class Recursos(ListView):
+    model = Archivos
+    template_name = 'recursos.html'
+    success_url = 'recursos'
+
+    def get_context_data(self, **kwargs):              
+        context = super().get_context_data(**kwargs)
+        context['archivos'] = Archivos.objects.all()
+        
+        return context
+    
+
+
+def download(request):
+    if request.method=='POST':
+        nombre=request.POST['nombre']       
+        upload1=request.FILES['archivo']
+        object=Archivos.objects.create(nombre=nombre,archivo=upload1)
+        object.save()  
+    context=Archivos.objects.all()
+    return render(request,'recursos.html',{'context':context})

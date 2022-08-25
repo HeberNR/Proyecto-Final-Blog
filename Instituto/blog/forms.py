@@ -42,4 +42,3 @@ class CommentPost(forms.ModelForm):
 
 
 
-
