@@ -32,10 +32,11 @@
 
             {% if request.user.is_staff %}
             <div class="post-btn">
-            <button type="button" class="btn text-light post-btn" style="background-color: #79AD40;"><a class="text-white" href="{% url 'editar' post.id %}" style="text-decoration: none;">Editar</a></button>
+              <a class="text-white" href="{% url 'editar' post.id %}" style="text-decoration: none;"><button type="button" class="btn text-light post-btn" style="background-color: #79AD40;">Editar</button></a>
 
-            <button type="button" class="btn post-btn" style="background-color: #73B9E9;"><a class="text-white" href="{% url 'borrar' post.id %}" style="text-decoration: none;">Borrar</a></button>
+            <button type="button" class="btn post-btn text-light" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #73B9E9;">Borrar</button>
             </div>
+            {% include 'post_confirm_delete.html' %}
             {% endif %}
             </div>
             
@@ -96,9 +97,6 @@
       </div>
    
 {% endblock contenido %}           
- 
-
-
 {% block footer %}
 
 {% include 'includes/footer.html' %}
@@ -111,3 +109,26 @@
 
 
 
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Borrar
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que quieres eliminar {{post.title}}? 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -96,6 +96,7 @@ class PostUpdate(StaffRequiredMixin,UpdateView):
 class PostDelete(DeleteView,LoginRequiredMixin,StaffRequiredMixin):
     model = Post
     success_url = '/'
+    template_name = 'details.html'
     
 
 
