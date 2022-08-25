@@ -11,7 +11,7 @@ urlpatterns = [
     path('mision/', views.Mision.as_view(),name = 'vision'),
     path('nosotros/', views.Nosotros.as_view(), name = 'nosotros'),
     path('recursos/', views.Recursos.as_view(), name = 'recursos'),
-    path('descargar/recursos/', views.download, name = 'descargar'),
+    # path('descargar/recursos/', views.download, name = 'descargar'),
 
  ]
 

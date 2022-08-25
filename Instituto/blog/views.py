@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Comment, Archivos
 from core.mixins import StaffRequiredMixin
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
-from .forms import CommentPost, PostForm
+from .forms import CommentPost, PostForm, UploadFile
 from django.urls import reverse, reverse_lazy
 from .filters import Filter
 
@@ -122,20 +122,22 @@ class Recursos(ListView):
     model = Archivos
     template_name = 'recursos.html'
     success_url = 'recursos'
+    form = UploadFile
 
     def get_context_data(self, **kwargs):              
         context = super().get_context_data(**kwargs)
         context['archivos'] = Archivos.objects.all()
+        context['form'] = self.form
         
         return context
     
 
 
-def download(request):
-    if request.method=='POST':
-        nombre=request.POST['nombre']       
-        upload1=request.FILES['archivo']
-        object=Archivos.objects.create(nombre=nombre,archivo=upload1)
-        object.save()  
-    context=Archivos.objects.all()
-    return render(request,'recursos.html',{'context':context})
+    def post(self, request, *args, **kwargs):
+        if request.method=='POST':
+            nombre=request.POST['nombre']       
+            upload1=request.FILES['archivo']
+            object=Archivos.objects.create(nombre=nombre,archivo=upload1)
+            object.save()  
+        return redirect(reverse('recursos'))
+        

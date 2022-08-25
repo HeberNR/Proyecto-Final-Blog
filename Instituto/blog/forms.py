@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment
+from .models import Archivos, Post, Comment
 
 class PostForm(forms.ModelForm):
     
@@ -42,3 +42,11 @@ class CommentPost(forms.ModelForm):
 
 
 
+class UploadFile(forms.ModelForm):
+    class Meta : 
+        model=Archivos
+        fields= ["nombre","archivo"]
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', }),
+            'archivo': forms.FileInput(attrs={'class': 'form-control', })
+        }

@@ -57,3 +57,5 @@ class Archivos(models.Model):
     nombre = models.CharField(max_length=200)
     archivo = models.FileField(upload_to = 'archivos' )
 
+    def __str__(self):
+        return f"{self.nombre}"
