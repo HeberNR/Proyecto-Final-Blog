@@ -83,10 +83,11 @@ class PostUpdate(StaffRequiredMixin,UpdateView):
     form_class= PostForm
     # fields = ['title','content','category']
 
-    def get_absolute_url(self):
+    # def get_absolute_url(self):
         
-        return reverse('inicio')
-    
+    #     return reverse('inicio')
+    def get_success_url(self):
+        return reverse('details', kwargs = {'pk': self.object.id})
     def get_form_kwargs(self):
         kwargs=super(PostUpdate, self).get_form_kwargs()  
         kwargs["usuario_id"]=self.request.user.id
