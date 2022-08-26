@@ -33,7 +33,7 @@ class CommentPost(forms.ModelForm):
         model=Comment
         fields= ["content"]
         widgets = {
-            'content': forms.Textarea(attrs={'class': 'form-control', }),
+            'content': forms.Textarea(attrs={'class': 'form-control content', }),
         }
     
     def __init__(self, *args, **kwargs):
