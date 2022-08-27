@@ -28,7 +28,6 @@ Una vez creada, se debe ingresar a la misma y ejecutar los siguientes comandos e
 ```
 git init
 git clone https://github.com/federico42o/Proyecto-Final-Blog.git
-git fetch origin
 git checkout -b NombreDeRamaNueva
 ```
 
