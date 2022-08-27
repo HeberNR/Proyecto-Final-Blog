@@ -59,7 +59,7 @@ Haciendo esto, se instalaran en el sistema o en el virtualenv que tengamos activ
 Djando trae por defecto una base de datos llamadadb.sqlite la que nos daba la posibilidad de trabajar directamente ahí.
 Pero nosostros utilizamos una base de datos Mysql para este proyecto.
 Para instalar la base de datos en la aplicacion Instituto creamos una carpeta llamada "settings" la cual contiene las configuraciones de nuestro proyecto en dos archivos "base.py" y "local.py" este ultimo archivos es en donde esta la configuración de la base de dato de cada colaborardor en particular es por esto y para no generar conflictos con las migraciones que tenemos ingorado el archivo "local.py"
-Para conectar Mysql con Django debemos seguir los siguientes pasos (copiarlos en el archivo local.py)
+Para conectar Mysql con Django debemos crear el archivo 'local.py' y seguir los siguientes pasos (copiarlos en el archivo local.py)
 ```
 from .base import *
 import os
@@ -80,13 +80,17 @@ DATABASES = {
     }
 }
 ```
-Por último, se deben realizar las migraciones necesarias utilizando python manage.py makemigrations y python manage.py migrate para completar la configuración.
+Por último, se deben realizar las migraciones necesarias utilizando
+```
+python manage.py migrate 
+```
+para completar la configuración.
 
 Para crear un nuevo superuser procederemos de la siguiente manera:
 
 Con el entorno virtual activado, desde el terminal de Visual Studio Code ejecutamos :
 
-"python manage.py createsuperuser"
+```python manage.py createsuperuser```
 
 El comando nos proporcionara un programa interactivo que nos pedirá ingresar un usuario, un correo electrónico y una contraseña.
 
@@ -100,7 +104,7 @@ La contraseña puede ser arbitraria, aunque si Django detecta que es una contras
 
 Por último nos queda comprobar que todo funcione correctamente al levanatar el servidor, para ello debemos porsicionarnos a la altura del archivos "manage.py" y ejecutar el siguiente comando:
 
-python manage.py runserver
+```python manage.py runserver```
 
 Este comando abre el servidor en la dirección 127.0.0.1:8000/.
 
