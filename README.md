@@ -5,13 +5,13 @@
 
 ## Integrantes Grupo 6
 
-* ** Di Blasio Sergio
-* ** Silva Alan Federico
-* ** Ramirez Heber Nahuel intento 4mil
-* ** Benitez Damian Nicolas
-* ** Laleff Alexis Martin
-* ** Echaide Maximiliano
-* ** Romano Cristian Julian
+* Di Blasio Sergio
+* Silva Alan Federico
+* Ramirez Heber Nahuel intento 4mil
+* Benitez Damian Nicolas
+* Laleff Alexis Martin
+* Echaide Maximiliano
+* Romano Cristian Julian
 
 
 # Proyecto Final Blog - Instituto Barranqueras UEGP N° 161.
@@ -41,10 +41,11 @@ El último comando se debe saltar si ya se creó una rama directamente desde Git
 Cuando clonas un repositorio, es posible que puedas encontrar algunos errores.
 
 Si no puedes clonar un repositorio, revisa que:
-
-    Puedas conectarte utilizando HTTPS. Para obtener más información, consulta la sección "Errores de clonado de HTTPS".
-    Tienes permiso para acceder al repositorio que quieres clonar. Para obtener más información, consulta la sección "Error: Repositorio no encontrado".
-    La rama predeterminada que quieres clonar aún existe. Para obtener más información, consulta "Error: El HEAD remoto se refiere a una ref inexistente, imposible registrar",
+```
+Puedas conectarte utilizando HTTPS. Para obtener más información, consulta la sección "Errores de clonado de HTTPS".
+Tienes permiso para acceder al repositorio que quieres clonar. Para obtener más información, consulta la sección "Error: Repositorio no encontrado".
+La rama predeterminada que quieres clonar aún existe. Para obtener más información, consulta "Error: El HEAD remoto se refiere a una ref inexistente, imposible registrar"
+```
 
 ### Instalando Dependencias
 
