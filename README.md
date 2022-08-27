@@ -7,7 +7,7 @@
 
 * Di Blasio Sergio
 * Silva Alan Federico
-* Ramirez Heber Nahuel intento 4mil
+* Ramirez Heber Nahuel
 * Benitez Damian Nicolas
 * Laleff Alexis Martin
 * Echaide Maximiliano
