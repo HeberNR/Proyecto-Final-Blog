@@ -66,7 +66,7 @@ STATICFILES_DIRS = (
     os.path.join(os.path.dirname(BASE_DIR), "static")
 ),
 
-
+```
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -77,7 +77,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+```
 Por último, se deben realizar las migraciones necesarias utilizando python manage.py makemigrations y python manage.py migrate para completar la configuración.
 
 Para crear un nuevo superuser procederemos de la siguiente manera:
