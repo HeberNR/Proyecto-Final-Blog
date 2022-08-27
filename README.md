@@ -14,13 +14,13 @@
 - Romano Cristian Julian
 
 
-Proyecto Final Blog - Instituto Barranqueras UEGP N° 161.
-Introducción
+# Proyecto Final Blog - Instituto Barranqueras UEGP N° 161.
+## Introducción
 
 El siguiente repositorio público donde realizamos el desarrollo de la aplicación tipo Blog contiene una instalación de Django, es por esto que para que todo funcione correctamente y no se generen conflictos de versiones es necesario que se instale el archivo requierements.txt. Los pasos a seguir para esto los explicaremos más adelante.
 
 
->> Clonando el repositorio
+### Clonando el repositorio
 
 En el directorio de trabajo, se debe crear una carpeta nueva. Podemos darle cualquier nombre a la carpeta pero es preferible que el nombre sea algo representativo al proyecto que estamos realizando.
 
@@ -35,7 +35,7 @@ El último comando creará una rama nueva con el nombre que le demos, esto hace 
 
 El último comando se debe saltar si ya se creó una rama directamente desde GitHub. Si esto ya se tiene una rama, el comando a ustilizar es git checkout NombreDeRamaCreada (esto nos permite movernos a la rama que ya teniamos creada).
 
->> Solucionar los errores de clonado
+### Solucionar los errores de clonado
 
 Cuando clonas un repositorio, es posible que puedas encontrar algunos errores.
 
@@ -45,14 +45,14 @@ Si no puedes clonar un repositorio, revisa que:
     Tienes permiso para acceder al repositorio que quieres clonar. Para obtener más información, consulta la sección "Error: Repositorio no encontrado".
     La rama predeterminada que quieres clonar aún existe. Para obtener más información, consulta "Error: El HEAD remoto se refiere a una ref inexistente, imposible registrar",
 
->> Instalando Dependencias
+### Instalando Dependencias
 
 Una vez clonado el código, se deben instalar las dependencias descriptas en el archivo requeriments.txt, para ello debemos ejecutar el siguiente comando "pip install -r requirements.txt" en la consola posicionandonos en el directorio donde se encuentre este archivo.
 Haciendo esto, se instalaran en el sistema o en el virtualenv que tengamos activado, los paquetes anotados en el archivo requirements.txt
 
 
 
->> Creación de la base de datos, migración y creación de superuser
+### Creación de la base de datos, migración y creación de superuser
 
 Djando trae por defecto una base de datos llamadadb.sqlite la que nos daba la posibilidad de trabajar directamente ahí.
 Pero nosostros utilizamos una base de datos Mysql para este proyecto.
@@ -94,7 +94,7 @@ Luego, nos pide un correo, el cual puede estar en blanco, ya que no se usa para 
 
 La contraseña puede ser arbitraria, aunque si Django detecta que es una contraseña muy sencilla(números consecuitivos, todas letras min{usculas, etc) nos mostrará un mensaje diciendonos que la contraseña es debil y si qeuremos continuar con la misma, si queremos seguir con esa contraseña presionamos "y" y si por el contrario queremos cambiarla por una más segura presionamos "n". 
 
->> Probando el Servidor
+### Probando el Servidor
 
 Por último nos queda comprobar que todo funcione correctamente al levanatar el servidor, para ello debemos porsicionarnos a la altura del archivos "manage.py" y ejecutar el siguiente comando:
 
