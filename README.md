@@ -5,13 +5,13 @@
 
 ## Integrantes Grupo 6
 
-- Di Blasio Sergio
-- Silva Alan Federico
-- Ramirez Heber Nahuel intento 4mil
-- Benitez Damian Nicolas
-- Laleff Alexis Martin
-- Echaide Maximiliano
-- Romano Cristian Julian
+* ** Di Blasio Sergio
+* ** Silva Alan Federico
+* ** Ramirez Heber Nahuel intento 4mil
+* ** Benitez Damian Nicolas
+* ** Laleff Alexis Martin
+* ** Echaide Maximiliano
+* ** Romano Cristian Julian
 
 
 # Proyecto Final Blog - Instituto Barranqueras UEGP N° 161.
@@ -25,11 +25,12 @@ El siguiente repositorio público donde realizamos el desarrollo de la aplicaci�
 En el directorio de trabajo, se debe crear una carpeta nueva. Podemos darle cualquier nombre a la carpeta pero es preferible que el nombre sea algo representativo al proyecto que estamos realizando.
 
 Una vez creada, se debe ingresar a la misma y ejecutar los siguientes comandos en un terminal GIT:
-
+```
 git init
 git clone https://github.com/federico42o/Proyecto-Final-Blog.git
 git fetch origin
 git checkout -b NombreDeRamaNueva
+```
 
 El último comando creará una rama nueva con el nombre que le demos, esto hace que tengamos una rama propia actualizada desde main.
 
@@ -58,7 +59,7 @@ Djando trae por defecto una base de datos llamadadb.sqlite la que nos daba la po
 Pero nosostros utilizamos una base de datos Mysql para este proyecto.
 Para instalar la base de datos en la aplicacion Instituto creamos una carpeta llamada "settings" la cual contiene las configuraciones de nuestro proyecto en dos archivos "base.py" y "local.py" este ultimo archivos es en donde esta la configuración de la base de dato de cada colaborardor en particular es por esto y para no generar conflictos con las migraciones que tenemos ingorado el archivo "local.py"
 Para conectar Mysql con Django debemos seguir los siguientes pasos (copiarlos en el archivo local.py)
-
+```
 from .base import *
 import os
 
@@ -77,7 +78,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+```
 Por último, se deben realizar las migraciones necesarias utilizando python manage.py makemigrations y python manage.py migrate para completar la configuración.
 
 Para crear un nuevo superuser procederemos de la siguiente manera:
