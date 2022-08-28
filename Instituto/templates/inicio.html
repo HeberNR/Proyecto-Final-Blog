@@ -3,22 +3,6 @@
 
 
 {% block contenido %}
-<h1 class="hola">a</h1>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <div class="alert alert-secondary" role="alert">
-      
-      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-    </div>
-    {% endfor %}
-</ul>
-{% endif %}
-
-<form action="" method="post"> {% csrf_token %}
-
-  
- {% for p in post %}
 
   <div class="card" style="width: 18rem;">
 
@@ -38,6 +22,48 @@
   <img src="{% static 'img/avatar.jpg' %}" class="card-img-top" >
   {% endif %}
 
+<div class="container-fluid w-80 margentop">
+  <div class="row">
+    <div class="col-md-8">
+
+      {% if filter.qs%}
+      {% for f in filter.qs %}
+        <div class="card m-3" style="width: 80%;">
+          {% if f.image %}
+          {% load static %}
+            <img src="{{f.image.url}}" class="imagen" alt="..." >
+          {% else %}
+            <img src="{% static 'img/avatar.jpg' %}" class="imagen">
+          {% endif %}
+
+          <div class="card-body">
+            <h3 class="card-title">{{f.title | title}}</h3>
+            <p class="card-text">{{f.description }}</p>
+            <p class="card-text"><i class="bi bi-pen-fill m-1"></i><small class="text-muted">{{f.author.username}}</small></p>
+            <p class="card-text"><i class="bi bi-clock-fill m-1"></i>{{f.timestamp}}</p>
+            <button type="button" class="btn btn-dark" ><a href="{% url 'details' f.id %}"style="text-decoration: none; color: #fff">Seguir leyendo</a></button>
+          </div>
+        </div>
+      {% endfor %}
+      {% else %}
+      <h4>No se ha encontrado ninguna noticia relacionada.</h4>
+      {%endif%}
+
+    </div>
+    <div class="col-md-4">
+      
+        <form action="" method="get" class="m-3 filter-box">
+
+          
+            <div class="categoria">
+              <h4>Filtrar por categorias</h4>
+            {{ filter.form.category}}
+            </div>
+            <div class="fecha">
+              <h4>Filtrar por fecha</h4>
+            {{ filter.form.timestamp}}
+            </div>
+
 
         <div class="card-body">
           <h5 class="card-title">{{p.title}}</h5>
@@ -48,23 +74,20 @@
 
         
 
-    <div class="card-body">
-      <h5 class="card-title"><a href="{% url 'details' p.id %}">{{p.title}}</a></h5>
-      <p class="card-text">{{p.description}}</p>
-      <p class="card-text">Creado por {{p.author.username}}</p>
-      <p class="card-text">Creado el {{p.timestamp}}</p>
+          <button type="submit" class="btn btn-secondary text-light"><i class="bi bi-funnel" style="padding: 3px;"></i>Filtrar</button>
+        </form>
+
+
     </div>
 
+  </div>
+  </div>
 
- {% endfor %}
+  {% endblock %}
+  
+  {% block footer %}
+
+
+    {% include 'includes/footer.html' %}
+  {% endblock footer %}
     
- 
-    
-
-
-
-</form>
-    
-
-
-{% endblock %}

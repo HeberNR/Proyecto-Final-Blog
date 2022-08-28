@@ -24,6 +24,7 @@ AUTH_USER_MODEL = 'usuario.Usuario'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.humanize',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -31,10 +32,11 @@ INSTALLED_APPS = [
     'usuario.apps.UsuarioConfig',
     'blog.apps.BlogConfig',
     'core',
-    'crispy_forms'
+    'django_filters',
+    
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,6 +69,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Instituto.wsgi.application'
 
 
+FILTERS_EMPTY_CHOICE_LABEL = 'Cualquiera'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -96,7 +100,7 @@ TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 LOGIN_URL ='/login'
 LOGIN_REDIRECT_URL = '/'

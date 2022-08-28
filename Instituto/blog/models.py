@@ -1,7 +1,10 @@
+from distutils.command.upload import upload
+from xml.etree.ElementInclude import include
 from django.db import models
 from django.utils import timezone
 from usuario.models import Usuario
 from django.urls import reverse
+
 
 
 
@@ -13,7 +16,7 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    timestamp = models.DateTimeField(default = timezone.now)
+    timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     image = models.ImageField(upload_to= 'uploads_post', null = True, blank = True)
     # slug = models.SlugField(unique=True,null=False)
@@ -48,3 +51,11 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.content}"
 
+
+
+class Archivos(models.Model):
+    nombre = models.CharField(max_length=200)
+    archivo = models.FileField(upload_to = 'archivos' )
+
+    def __str__(self):
+        return f"{self.nombre}"

@@ -1,0 +1,40 @@
+{% extends 'base/base.html' %}
+
+
+{% block contenido %}
+
+<div class="container margentop ">
+    <div class="upload-form m-3 w-50">
+    {% if request.user.is_staff %}
+    <form action="" method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}
+            {{form}}
+    <button class="btn m-1" style="background-color: #79AD40;" type="submit">Subir</button>
+    </form>
+    {% endif %}
+    </div>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Ver</th>
+        <th scope="col">Descargar</th>
+    </tr>
+    </thead>
+    {% for f in archivos  %}
+
+
+    <tbody>
+      
+      <tr class="table-dark">
+          <th scope="row">{{f.nombre | title}}</th>
+          <td><button class="btn " style="background-color: #79AD40;" type="submit"><a class="nav-link text-light" href="{{f.archivo.url}}" target="_blank" >Ver</a></button></td>
+          <td><button class="btn" style="background-color: #79AD40;" type="submit"><a class="nav-link text-light" href="{{f.archivo.url}}" download>Descargar</a></button></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+
+
+ </div>
+{% endblock contenido %}

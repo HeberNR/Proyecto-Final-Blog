@@ -3,22 +3,30 @@ from pipes import Template
 from django.shortcuts import render,get_object_or_404,redirect
 from django.views.generic import DetailView,ListView,TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Post, Comment
+from .models import Post, Comment, Archivos
 from core.mixins import StaffRequiredMixin
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
-from .forms import CommentPost, PostForm
+from .forms import CommentPost, PostForm, UploadFile
 from django.urls import reverse, reverse_lazy
-
+from .filters import Filter
 
 
 
 class Inicio(ListView):
     model = Post
     template_name= 'inicio.html'
+ 
 
-    def get_context_data(self, **kwargs):
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        filter = Filter(self.request.GET, queryset)
+        return filter.qs
+        
+
+    def get_context_data(self, **kwargs):              
         context = super().get_context_data(**kwargs)
         context['post'] = Post.objects.all()
+        context['filter'] = Filter(self.request.GET, queryset=self.get_queryset())
         return context
     
 
@@ -66,25 +74,30 @@ class BlogDetail(DetailView):
 
     def get_success_url(self):
         return reverse('details', kwargs = {'pk': self.object.id})
-    
-
-
 
  
 
 
 class PostUpdate(StaffRequiredMixin,UpdateView):
     model = Post
-    fields = ['title','content','category']
+    form_class= PostForm
+    # fields = ['title','content','category']
 
-    def get_absolute_url(self):
+    # def get_absolute_url(self):
         
-        return reverse('inicio')
+    #     return reverse('inicio')
+    def get_success_url(self):
+        return reverse('details', kwargs = {'pk': self.object.id})
+    def get_form_kwargs(self):
+        kwargs=super(PostUpdate, self).get_form_kwargs()  
+        kwargs["usuario_id"]=self.request.user.id
+        return kwargs
     
 
 class PostDelete(DeleteView,LoginRequiredMixin,StaffRequiredMixin):
     model = Post
     success_url = '/'
+    template_name = 'details.html'
     
 
 
@@ -102,3 +115,29 @@ class Nosotros(TemplateView):
     def get_success_url(self):
     
         return reverse('nosotros')
+
+
+
+class Recursos(ListView):
+    model = Archivos
+    template_name = 'recursos.html'
+    success_url = 'recursos'
+    form = UploadFile
+
+    def get_context_data(self, **kwargs):              
+        context = super().get_context_data(**kwargs)
+        context['archivos'] = Archivos.objects.all()
+        context['form'] = self.form
+        
+        return context
+    
+
+
+    def post(self, request, *args, **kwargs):
+        if request.method=='POST':
+            nombre=request.POST['nombre']       
+            upload1=request.FILES['archivo']
+            object=Archivos.objects.create(nombre=nombre,archivo=upload1)
+            object.save()  
+        return redirect(reverse('recursos'))
+        

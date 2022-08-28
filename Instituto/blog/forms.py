@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment
+from .models import Archivos, Post, Comment
 
 class PostForm(forms.ModelForm):
     
@@ -18,9 +18,9 @@ class PostForm(forms.ModelForm):
         labels = {
             'title': 'Titulo',
             'image': 'Imagen',
-            'content': 'contenido',
-            'description': 'descripcion',
-            'category': 'categoria',
+            'content': 'Contenido',
+            'description': 'Descripción',
+            'category': 'Categoría',
         }
     
     def __init__(self, usuario_id, *args, **kwargs):
@@ -33,9 +33,20 @@ class CommentPost(forms.ModelForm):
         model=Comment
         fields= ["content"]
         widgets = {
-            'content': forms.Textarea(attrs={'class': 'form-control', }),
+            'content': forms.Textarea(attrs={'class': 'form-control content', }),
         }
     
     def __init__(self, *args, **kwargs):
         super(CommentPost, self).__init__(*args, **kwargs)
         self.fields['content'].label = ""
+
+
+
+class UploadFile(forms.ModelForm):
+    class Meta : 
+        model=Archivos
+        fields= ["nombre","archivo"]
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', }),
+            'archivo': forms.FileInput(attrs={'class': 'form-control', })
+        }
